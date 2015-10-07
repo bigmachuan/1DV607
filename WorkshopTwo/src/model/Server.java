@@ -38,7 +38,7 @@ public class Server {
 		
 		System.out.println("Please type in New member's personalnumber: ");
 		
-		int tmp= input.nextInt();
+		double tmp= input.nextDouble();
 		
 		m_member.setPersonalnumber(tmp);
 		
@@ -53,7 +53,7 @@ public class Server {
 		
 		System.out.println("Please type in the member'personalnumber first: ");
 		
-		int tmp=input.nextInt();
+		double tmp=input.nextDouble();
 		
 		Member choose = new Member();
 		int position = 0;
@@ -127,7 +127,7 @@ public class Server {
 		
 		System.out.println("Please type in the member'personalnumber: ");
 		
-		int tmp=input.nextInt();
+		double tmp=input.nextDouble();
 		
 		for(int i=0;i<list.size();i++){
 			
@@ -149,7 +149,7 @@ public class Server {
 		
 		System.out.println("Please type in the member'personalnumber: ");
 		
-		int tmp=input.nextInt();
+		double tmp=input.nextDouble();
 		
 		Member choose = new Member();
 		int position = 0;
@@ -194,7 +194,7 @@ public class Server {
 		
 		System.out.println("Please type in the member'personalnumber: ");
 		
-		int tmp=input.nextInt();
+		double tmp=input.nextDouble();
 		
 		Member choose = new Member();
 		
@@ -223,7 +223,7 @@ public class Server {
 		
 		System.out.println("Please type in the member'personalnumber first: ");
 		
-		int tmp=input.nextInt();
+		double tmp=input.nextDouble();
 		
 		Member choose = new Member();
 		int position = 0;
@@ -265,7 +265,7 @@ public class Server {
 		
 		System.out.println("Please type in the member'personalnumber first: ");
 		
-		int tmp=input.nextInt();
+		double tmp=input.nextDouble();
 		
 		Member choose = new Member();
 		int position = 0;

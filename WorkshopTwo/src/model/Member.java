@@ -7,7 +7,7 @@ public class Member implements Comparable<Member>{
 	
     private UUID id;
 	private String name;
-	private int personalnumber;
+	private double personalnumber;
 	ArrayList<Boat> boats=new ArrayList<Boat>();
 	
 	public Member(){
@@ -32,11 +32,11 @@ public class Member implements Comparable<Member>{
 		this.name = name;
 	}
 
-	public int getPersonalnumber() {
+	public double getPersonalnumber() {
 		return personalnumber;
 	}
 
-	public void setPersonalnumber(int personalnumber) {
+	public void setPersonalnumber(double personalnumber) {
 		this.personalnumber = personalnumber;
 	}
 
@@ -50,7 +50,7 @@ public class Member implements Comparable<Member>{
 	@Override
 	public int compareTo(Member o) {
 		
-		return Integer.compare(this.getPersonalnumber(), o.getPersonalnumber());
+		return Double.compare(this.getPersonalnumber(), o.getPersonalnumber());
 	}
 
 }
