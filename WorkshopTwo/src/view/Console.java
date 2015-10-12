@@ -42,6 +42,8 @@ public class Console{
 		
 		String str= input.nextLine();
 		
+		int test=1;
+		
 		if(str.equals("Addmember")){
 			
 			return Event.Addmember;
