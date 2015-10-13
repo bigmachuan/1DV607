@@ -24,23 +24,13 @@ public class Server {
 		return list;
 	}
 	
-	public void Addmember(){
+	public void Addmember(String Name, String PersonalNumber){
 		
 		m_member = new Member();
 		
-		Scanner input=new Scanner(System.in);
+		m_member.setName(Name);
 		
-		System.out.println("Please type in New member's name: ");
-        
-		String str= input.nextLine();
-		
-		m_member.setName(str);
-		
-		System.out.println("Please type in New member's personalnumber: ");
-		
-		double tmp= input.nextDouble();
-		
-		m_member.setPersonalnumber(tmp);
+		m_member.setPersonalnumber(PersonalNumber);
 		
 		list.add(m_member);
 		

@@ -10,6 +10,8 @@ public class Main {
         controller.Controller c=new controller.Controller();
         
         while(c.Dothings(v, s));
+        
+        
 
 	}
 
