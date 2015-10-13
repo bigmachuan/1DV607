@@ -100,6 +100,8 @@ public class Controller {
 			}
 			}
 			}
+			fail=true;
+			fail2=true;
 			a_sys.Addmember(entry1, entry2);
 			a_view.AddingCompleted();
 		}
