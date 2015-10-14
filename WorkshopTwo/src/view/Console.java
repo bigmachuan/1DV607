@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Console{
 	
-	private Scanner input=new Scanner(System.in);
+	private Scanner input;
 	
 	public enum Event{
 		
@@ -29,7 +29,7 @@ public class Console{
 	public void PresentInstructions(){
 		
 		System.out.println();
-		
+		input=new Scanner(System.in);
 		
 		System.out.println("Welcome to The happy pirate");
 		System.out.println("Please type in what you want to do");
@@ -111,6 +111,7 @@ public class Console{
 			System.err.println("Please type in a right number");
 			
 		}
+		input.nextLine();
 		return Event.BackMenu;
 		
 	}
@@ -120,14 +121,17 @@ public class Console{
 		
 		System.out.println("Press enter to go back to main menu");
 		input.nextLine();
-		input.nextLine();
+		
 	}
 	
+	
+	public void Blank(){
+		input.nextLine();
+	}
 	
 	public String getName(){
 		
         System.out.println("Please type in member's name: ");
-        input.nextLine();
 		return input.nextLine();
 		
 	}
@@ -167,15 +171,89 @@ public class Console{
 		System.out.println("Adding completed");
 	}
 	
-	
-	public void NamingErr(){
-		
-		System.out.println("Please type in a right spelling name");
-		
+	public void AddingFailed(){
+		System.err.println("Adding failed");
 	}
 	
 	
+	public void NamingErr(){
+		System.err.println("Please type in a right spelling name");
+	}
 	
+	public void MemberHasBefore(){
+		System.err.println("This Member's Personal Number has added before");
+	}
 	
+	public void Show(String list){
+		System.err.println(list);
+	}
+	
+	public int chooseMember(){
+		System.out.println("Please type in the Number of Member: ");
+		return input.nextInt();
+	}
+	
+	public void MemberNotExist(){
+		System.err.println("Please choose a Member which list above");
+	}
+	
+	public void NotNumber(){
+		System.err.println("Please type in a number");
+	}
+	
+	public void chooseBoatType(){
+		System.out.println("Please choose a type for Boat:"
+				+ "\n1.Sailboat"
+				+ "\n2.Motorsailer"
+				+ "\n3.Canoe"
+				+ "\n4.Other");
+		input.nextLine();
+		
+	}
+	public void BoatTypeNotExist(){
+		System.err.println("Please choose a boat type which list above");
+	}
+	public String chooseBoatTypeNumber(){
+		System.out.println("Please type in the Number of Boat's Type: ");
+		return input.nextLine();
+	}
+	
+	public String setBoatLength(){
+		System.out.println("Please type in this boat's length(meter): ");
+		return input.nextLine();
+	}
+	
+	public void DeleteComplete(){
+		System.out.println("Delete Completed");
+	}
+	
+	public void DeleteFailed(){
+		System.err.println("Delete Failed");
+	}
+	
+	public void jmp(){
+		System.out.println("You can press enter(Don't type in anything) if you don't want change this parameter");
+	}
+	
+	public void ChangeCompleted(){
+		System.out.println("Change Completed");
+	}
+	
+	public void ChangeFailed(){
+		System.err.println("Change Failed");
+	}
+	
+	public int chooseBoat(){
+		System.out.println("Please type in the Number of Boat: ");
+		return input.nextInt();
+	}
+		
+	public void BoatNotExist(){
+		System.err.println("Please choose a Boat which list above");
+	}
+	
+	public void errshow(String err){
+		System.err.println(err);
+	}
 	
 }

@@ -5,21 +5,29 @@ import java.util.UUID;
 
 public class Member implements Comparable<Member>{
 	
-    private UUID id;
+    private String id;
 	private String name;
 	private String personalnumber;
 	ArrayList<Boat> boats=new ArrayList<Boat>();
 	
 	public Member(){
-		id=UUID.randomUUID();
+		id=UUID.randomUUID().toString();
+	}
+	public Member(String name,String personalnumber,String id){
+		
+		this.name=name;
+		this.personalnumber=personalnumber;
+		this.id=id;
+		
 	}
 	
+	
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(UUID id){
+	public void setId(String id){
 		
 		this.id=id;
 	}
