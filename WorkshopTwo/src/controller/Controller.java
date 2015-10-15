@@ -243,12 +243,14 @@ public class Controller {
 			if(a_sys.DeleteMember()==true)
 			{
 				a_view.DeleteComplete();
+				a_view.Blank();
 			}
 			else
 			{
 				a_view.DeleteFailed();
+				a_view.Blank();
 			}
-			
+			fail=true;
 			
 		}
 		
@@ -279,6 +281,7 @@ public class Controller {
 			}
 			a_sys.setMember(chooseMember-1);
 			a_view.jmp();
+			a_view.Blank();
 			fail=true;
 			entry1=null;
 			entry2=null;
@@ -291,14 +294,16 @@ public class Controller {
 			while(fail){
 				
 				entry1=a_view.getName();
-				if(!entry1.matches("[a-zA-Z\\s]+")){
-					a_view.NamingErr();
-					
-				}
-				else if(entry1.isEmpty())
+				
+				if(entry1.isEmpty())
 				{
 					
 					fail=false;
+				}
+				else if(!entry1.matches("[a-zA-Z\\s]+")){
+					
+					a_view.NamingErr();
+					
 				}
 				else
 				{
@@ -311,14 +316,16 @@ public class Controller {
 				
 				entry2=a_view.getPersonalNumber();
 				
-				if(!entry2.matches("\\d{6}-\\d{4}")){
+				
+				if(entry2.isEmpty())
+				{
+					fail2=false;
+				
+				}
+				else if(!entry2.matches("\\d{6}-\\d{4}")){
 					
 					a_view.AddingFailed();
 					
-				}
-				else if(entry2.isEmpty())
-				{
-					fail2=false;
 				}
 				else
 				{
@@ -416,6 +423,8 @@ public class Controller {
 			fail=true;
 			
 		}
+		
+		
 		if(e == Event.DeleteBoat){
 			
 			a_view.Show(a_sys.CompactList());
@@ -460,7 +469,7 @@ public class Controller {
 			}
 			}
 			fail=true;
-			a_sys.setBoat(chooseMember);
+			a_sys.setBoat(chooseMember-1);
 			
 			if(a_sys.DeleteBoat())
 			{
@@ -470,9 +479,11 @@ public class Controller {
 			{
 				a_view.DeleteFailed();
 			}
-			
+			a_view.Blank();
 			
 		}
+		
+		
 		if(e == Event.ChangeBoatInformation){
 			
 			a_view.Show(a_sys.CompactList());
@@ -495,34 +506,6 @@ public class Controller {
 				a_view.NotNumber();
 			}
 			}
-			a_sys.setMember(chooseMember-1);
-			
-			a_view.Show(a_sys.LookSpecificMemberInformation());
-			fail=true;
-			
-		}
-		if(e == Event.DeleteBoat){
-			
-			a_view.Show(a_sys.CompactList());
-			int chooseMember = 0;
-			
-			while(fail)
-			{
-			try{
-			
-				chooseMember=a_view.chooseMember();
-				if(chooseMember>a_sys.getListSize())
-				{
-					a_view.MemberNotExist();
-				}
-				else
-				{
-					fail=false;
-				}
-			}catch(Exception ex){
-				a_view.NotNumber();
-			}
-			}
 			fail=true;
 			a_sys.setMember(chooseMember-1);
 			a_view.Show(a_sys.LookSpecificMemberInformation());
@@ -545,49 +528,54 @@ public class Controller {
 			}
 			}
 			fail=true;
-			a_sys.setBoat(chooseMember);
+			a_sys.setBoat(chooseMember-1);
 			
             int chooseBoatType=0;
 			a_view.jmp();
 			a_view.chooseBoatType();
-			while(fail2){
-				try{
-					if(a_view.chooseBoatTypeNumber()==null){
+			fail2=true;
+			
+			String chooseBoatTypeNumber=a_view.chooseBoatTypeNumber();
+			
+			if(chooseBoatTypeNumber.isEmpty()){
 						chooseBoatType=5;
 						fail2=false;
 					}
-					else{
+			
+			while(fail2){
+				try{
+					chooseBoatType=Integer.parseInt(chooseBoatTypeNumber);
 					
-					chooseBoatType=Integer.parseInt(a_view.chooseBoatTypeNumber());
-					if(chooseBoatType<1 ||chooseBoatType>4){
+					if(chooseBoatType<1 ||chooseBoatType>4)
+					{
 						a_view.BoatTypeNotExist();;
 					}
 					else
 					{
 						fail2=false;
 					}
-					}
+					
+					
 				}catch(Exception ex2){
 					a_view.NotNumber();
 				}
 			}
 			
-			fail=true;
+			
 			a_sys.setBoatType(chooseBoatType-1);
-			
+			fail=true;
 			int setBoatLength=0;
-			
-			while(fail){
-				try{
-					if(a_view.setBoatLength()==null){
+			String setBoatLengthTmp=a_view.setBoatLength();
+			if(setBoatLengthTmp.isEmpty()){
 						setBoatLength=-1;
 						fail=false;
 					}
-					else{
-					
-					setBoatLength=Integer.parseInt(a_view.setBoatLength());
+			
+			while(fail){
+				try{
+					setBoatLength=Integer.parseInt(setBoatLengthTmp);
 					fail=false;
-					}
+					
 					
 				}catch(Exception ex2){
 					

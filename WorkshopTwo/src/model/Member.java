@@ -57,8 +57,15 @@ public class Member implements Comparable<Member>{
 
 	@Override
 	public int compareTo(Member o) {
+		if(this.getPersonalnumber().equals(o.getPersonalnumber()))
+	    {
+		     return 0;
+		}
+		else
+		{
+			return 1;
+		}
 		
-		return this.getPersonalnumber().compareTo(o.getPersonalnumber());
 	}
 
 }

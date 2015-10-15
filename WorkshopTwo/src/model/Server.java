@@ -151,7 +151,7 @@ public class Server {
 		m_member.setName(Name);
 		m_member.setPersonalnumber(PersonalNumber);
 		
-		boolean hasBefore = true;
+		boolean hasBefore = false;
 		
 		if(list.size()==0)
 		{
@@ -164,10 +164,6 @@ public class Server {
 			if(m_member.compareTo(list.get(i))==0)
 			{
 				hasBefore=true;
-			}
-			else
-			{
-				hasBefore=false;
 			}
 		}
 		}
@@ -237,28 +233,22 @@ public class Server {
 	
 	public boolean ChangeMemberInformation(String name, String number){
 		
-		
 		Member change=list.get(setMember);
-		
-		if(name!=null){
+		boolean hasBefore=false;
+		if(!name.equals("")){
 			change.setName(name);
 		}
-		if(number!=null){
-			change.setPersonalnumber(number);
-		}
-		
-		boolean hasBefore=true;
-		
-        for(int i=0;i<list.size();i++){
+		if(!number.equals("")){
 			
-			if(m_member.compareTo(list.get(i))==0)
+			change.setPersonalnumber(number);
+			
+			 for(int i=0;i<list.size();i++){
+			
+			if(change.compareTo(list.get(i))==0)
 			{
 				hasBefore=true;
 			}
-			else
-			{
-				hasBefore=false;
-			}
+		}
 		}
 		
         if(hasBefore==false){
@@ -289,7 +279,8 @@ public class Server {
 	}
 	
 	public boolean DeleteBoat(){
-		
+		System.out.println(list.get(setMember).getName());
+		System.out.println(setBoat);
 		list.get(setMember).boats.remove(setBoat);
 		return true;
 		
