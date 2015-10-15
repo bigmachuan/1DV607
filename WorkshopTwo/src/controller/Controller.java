@@ -11,6 +11,8 @@ public class Controller {
 	private boolean fail=true;
 	private boolean fail2=true;
 	private SweID checkid=new SweID();
+	private Counter count=new Counter();
+	
 	
 	
 	public boolean Dothings(view.Console a_view, model.Server a_sys){
@@ -33,9 +35,16 @@ public class Controller {
 			
 			while(hasBefore)
 			{
-				
-			
+				count.reset();
+				fail=true;
 			while(fail){
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
+				
 				
 			entry1=a_view.getName();
 			if(!entry1.matches("[a-zA-Z\\s]+") || entry1.isEmpty()){
@@ -49,8 +58,15 @@ public class Controller {
 			
 			}
 			
-			
+			count.reset();
+			fail2=true;
 			while(fail2){
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 			
 			entry2=a_view.getPersonalNumber();
 			
@@ -135,11 +151,19 @@ public class Controller {
 			a_view.Show(a_sys.CompactList());
 			int chooseMember = 0;
 			
+			count.reset();
+			fail=true;
 			while(fail)
 			{
-			try{
-			
-				chooseMember=a_view.chooseMember();
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
+			    try{
+			    
+			    chooseMember=a_view.chooseMember();
 				if(chooseMember>a_sys.getListSize())
 				{
 					a_view.MemberNotExist();
@@ -157,7 +181,16 @@ public class Controller {
 			int chooseBoatType=0;
 			
 			a_view.chooseBoatType();
+			
+			count.reset();
+			fail2=true;
 			while(fail2){
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 				try{
 					
 					chooseBoatType=Integer.parseInt(a_view.chooseBoatTypeNumber());
@@ -174,12 +207,19 @@ public class Controller {
 				}
 			}
 			
-			fail=true;
 			a_sys.setBoatType(chooseBoatType-1);
 			
 			int setBoatLength=0;
 			
+			count.reset();
+			fail=true;
 			while(fail){
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 				try{
 					
 					setBoatLength=Integer.parseInt(a_view.setBoatLength());
@@ -221,8 +261,16 @@ public class Controller {
 			a_view.Show(a_sys.CompactList());
 			int chooseMember = 0;
 			
+			count.reset();
+			fail=true;
 			while(fail)
 			{
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 			try{
 			
 				chooseMember=a_view.chooseMember();
@@ -262,8 +310,16 @@ public class Controller {
 			a_view.Show(a_sys.CompactList());
 			int chooseMember = 0;
 			
+			count.reset();
+			fail=true;
 			while(fail)
 			{
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 			try{
 			
 				chooseMember=a_view.chooseMember();
@@ -290,8 +346,15 @@ public class Controller {
 			
 			while(hasBefore)
 			{
-			
+			count.reset();
+			fail=true;
 			while(fail){
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 				
 				entry1=a_view.getName();
 				
@@ -311,8 +374,15 @@ public class Controller {
 				}
 				
 				}
-			
+			count.reset();
+			fail2=true;
 			while(fail2){
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 				
 				entry2=a_view.getPersonalNumber();
 				
@@ -400,8 +470,16 @@ public class Controller {
 			a_view.Show(a_sys.CompactList());
 			int chooseMember = 0;
 			
+			count.reset();
+			fail=true;
 			while(fail)
 			{
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 			try{
 			
 				chooseMember=a_view.chooseMember();
@@ -429,9 +507,16 @@ public class Controller {
 			
 			a_view.Show(a_sys.CompactList());
 			int chooseMember = 0;
-			
+			count.reset();
+			fail=true;
 			while(fail)
 			{
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 			try{
 			
 				chooseMember=a_view.chooseMember();
@@ -451,8 +536,16 @@ public class Controller {
 			a_sys.setMember(chooseMember-1);
 			a_view.Show(a_sys.LookSpecificMemberInformation());
 			
+			count.reset();
+			fail=true;
 			while(fail)
 			{
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 			try{
 			
 				chooseMember=a_view.chooseBoat();
@@ -489,8 +582,16 @@ public class Controller {
 			a_view.Show(a_sys.CompactList());
 			int chooseMember = 0;
 			
+			count.reset();
+			fail=true;
 			while(fail)
 			{
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 			try{
 			
 				chooseMember=a_view.chooseMember();
@@ -510,8 +611,16 @@ public class Controller {
 			a_sys.setMember(chooseMember-1);
 			a_view.Show(a_sys.LookSpecificMemberInformation());
 			
+			count.reset();
+			fail=true;
 			while(fail)
 			{
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 			try{
 			
 				chooseMember=a_view.chooseBoat();
@@ -541,8 +650,15 @@ public class Controller {
 						chooseBoatType=5;
 						fail2=false;
 					}
-			
+			count.reset();
+			fail2=true;
 			while(fail2){
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 				try{
 					chooseBoatType=Integer.parseInt(chooseBoatTypeNumber);
 					
@@ -570,8 +686,15 @@ public class Controller {
 						setBoatLength=-1;
 						fail=false;
 					}
-			
+			count.reset();
+			fail=true;
 			while(fail){
+				count.add();
+				if(count.check())
+				{
+					a_view.BackMenu();
+					return true;
+				}
 				try{
 					setBoatLength=Integer.parseInt(setBoatLengthTmp);
 					fail=false;
