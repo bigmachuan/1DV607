@@ -17,7 +17,7 @@ public class Dealer extends Player {
   public Dealer(RulesFactory a_rulesFactory) {
   
     m_newGameRule = a_rulesFactory.GetNewGameRule();
-    m_hitRule = a_rulesFactory.GetHitRule();
+    m_hitRule = a_rulesFactory.GetSoft17Strategy();
     
     /*for(Card c : m_deck.GetCards()) {
       c.Show(true);
