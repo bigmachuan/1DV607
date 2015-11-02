@@ -4,12 +4,15 @@ package BlackJack.view;
 public class SimpleView implements IView 
 {
 	
+	private BlackJack.view.RulePart rule=new Rule();
 	
         public void DisplayWelcomeMessage()
         {
           System.out.println("Hello Black Jack World");
           System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
-          
+          System.out.println("The Play Rules:");
+          rule.accept(new RuleDisplayVistor());
+          System.out.println("\n");
         }
 
         public int GetInput()
@@ -70,6 +73,10 @@ public class SimpleView implements IView
         	    Thread.sleep(500);
         	    System.out.println(".");
         	    Thread.sleep(500);
+        	    for(int clear = 0; clear < 1000; clear++)
+        	    {
+        	       System.out.println("\b") ;
+        	    }
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

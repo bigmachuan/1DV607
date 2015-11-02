@@ -1,5 +1,7 @@
 package BlackJack.model;
 
+import BlackJack.model.AbstractFactoryPatternRules.*;
+
 public class Game {
 
   private Dealer m_dealer;
@@ -7,8 +9,17 @@ public class Game {
 
   public Game()
   {
-    m_dealer = new Dealer(new BlackJack.model.rules.RulesFactory());
+    AbstractFactory HitStrategyFactory=FactoryProducer.getFactory("HitStrategy");
+    IHitStrategy hit=HitStrategyFactory.getHitStrategy("Soft17Strategy");
+    AbstractFactory NewGameStrategyFactory=FactoryProducer.getFactory("NewGameStrategy");
+    INewGameStrategy NG=NewGameStrategyFactory.getNewGameStrategy("AmericanNewGameStrategy");
+    AbstractFactory WinStrategy=FactoryProducer.getFactory("WinStrategy");
+    IWinStrategy Win=WinStrategy.getWinStrategy("PlayerWinStrategy");
+    
+	  
+	m_dealer = new Dealer(NG,hit,Win);
     m_player = new Player();
+    
   }
     
     

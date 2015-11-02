@@ -1,6 +1,7 @@
 package BlackJack.model;
 
-import BlackJack.model.rules.*;
+//import BlackJack.model.rules.*;
+import BlackJack.model.AbstractFactoryPatternRules.*;
 
 public class Dealer extends Player {
 
@@ -15,11 +16,11 @@ public class Dealer extends Player {
 	  p.DealCard(c);
   }
 
-  public Dealer(RulesFactory a_rulesFactory) {
+  public Dealer(INewGameStrategy m_newGameRule,IHitStrategy m_hitRule,IWinStrategy m_winStrategy) {
   
-    m_newGameRule = a_rulesFactory.GetNewGameRule();
-    m_hitRule = a_rulesFactory.GetSoft17Strategy();
-    m_winStrategy= a_rulesFactory.GetPlayerWinStrategy();
+    this.m_newGameRule = m_newGameRule;
+    this.m_hitRule = m_hitRule;
+    this.m_winStrategy= m_winStrategy;
     
     /*for(Card c : m_deck.GetCards()) {
       c.Show(true);
