@@ -2,7 +2,6 @@ package BlackJack.controller;
 
 import BlackJack.view.IView;
 
-import java.io.IOException;
 
 import BlackJack.model.Game;
 import BlackJack.model.IObserver;
