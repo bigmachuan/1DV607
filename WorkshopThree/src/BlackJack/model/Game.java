@@ -56,6 +56,12 @@ public class Game {
   {
     return m_player.CalcScore();
   }
+  
+  public void SubscribeToNewCard(IObserver observer)
+  {
+	  m_player.SubscribeToNewCard(observer);
+	  m_dealer.SubscribeToNewCard(observer);
+  }
     
   
 }

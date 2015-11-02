@@ -7,6 +7,7 @@ public class Dealer extends Player {
   private Deck m_deck;
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_hitRule;
+  private IWinStrategy m_winStrategy;
   
   private void GetAcard(Player p) {
 	  Card c=m_deck.GetCard();
@@ -18,6 +19,7 @@ public class Dealer extends Player {
   
     m_newGameRule = a_rulesFactory.GetNewGameRule();
     m_hitRule = a_rulesFactory.GetSoft17Strategy();
+    m_winStrategy= a_rulesFactory.GetPlayerWinStrategy();
     
     /*for(Card c : m_deck.GetCards()) {
       c.Show(true);
@@ -64,7 +66,7 @@ public class Dealer extends Player {
 
   public boolean IsDealerWinner(Player a_player) {
 	  
-	  return new WinRulesFactory(a_player,this).DealerWin();
+	  return m_winStrategy.DealerWin(this, a_player);
 	  
 	  
   }

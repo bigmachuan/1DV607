@@ -4,15 +4,12 @@ package BlackJack.view;
 public class SimpleView implements IView 
 {
 	
-	private GetAcard NewCard=new GetAcard();
 	
-	
-
         public void DisplayWelcomeMessage()
         {
           System.out.println("Hello Black Jack World");
           System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
-          NewCard.addObserver(new GetAcardResponse());
+          
         }
 
         public int GetInput()
@@ -45,7 +42,6 @@ public class SimpleView implements IView
             System.out.println(a_name + " Has: ");
             for(BlackJack.model.Card c : a_hand)
             {
-            	NewCard.setCard(c);
             	DisplayCard(c);
                 
             }
@@ -66,4 +62,18 @@ public class SimpleView implements IView
             }
             
         }
+        public void PauseGame(){
+        	System.out.print("Dealing.");
+        	try {
+				Thread.sleep(500);
+				System.out.print(".");
+        	    Thread.sleep(500);
+        	    System.out.println(".");
+        	    Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+        	
+        }
+        
     }
