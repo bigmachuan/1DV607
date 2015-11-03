@@ -20,7 +20,9 @@ public class Console{
 		ChangeBoatInformation,
 		Input,
 		Output,
-		BackMenu
+		BackMenu,
+		Visitor,
+		Administrator
 		
 		
 	}
@@ -29,7 +31,7 @@ public class Console{
 	public void PresentInstructions(){
 		
 		System.out.println();
-		input=new Scanner(System.in);
+		//input=new Scanner(System.in);
 		
 		System.out.println("Welcome to The happy pirate");
 		System.out.println("Please type in what you want to do");
@@ -42,6 +44,116 @@ public class Console{
 		
 		
 	}
+	
+	public void Authentication(){
+		
+		System.out.println();
+		input=new Scanner(System.in);
+		
+		System.out.println("Welcome to The happy pirate");
+		System.out.println("You are a:");
+		System.out.println("1.Visitor\n2.Administrator");
+		
+		
+	}
+	
+	public Event getAuthentication(){
+		
+		try{
+			
+			int number= input.nextInt();
+			
+			if(number==1)
+			{
+				return Event.Visitor;
+			}
+			if(number==2)
+			{
+				return Event.Administrator;
+			}
+			
+			
+        }catch(Exception e){
+			
+			System.err.println("Please type in a right number");
+			
+		}
+		input.nextLine();
+		return Event.BackMenu;
+			
+		
+	}
+	
+	public String getAdministratorUserName(){
+		input.nextLine();
+		System.out.println("Please Type in Administrator User Name:");
+		return input.nextLine();
+		
+	}
+	
+	public String getAdministratorUserPassword(){
+		System.out.println("Please Type in Administrator User Password:");
+		return input.nextLine();
+		
+	}
+	
+	public void NotAdministrator(){
+		
+		System.err.println("Wrong Administrator Name or Password.");
+		
+	}
+	
+	public void PresentInstructionsForVistor(){
+		
+		System.out.println();
+		//input=new Scanner(System.in);
+		
+		System.out.println("Welcome to The happy pirate");
+		System.out.println("Please type in what you want to do");
+		System.out.println("Here are some options:  "
+				+ "\n1.CompactList \n2.VerboseList"
+				+ "\n3.LookSpecificMemberInformation "
+				+ "\n4.Quit"
+				+ "\nPlease type in the Operation Number you want to do");
+		
+	}
+	
+	public Event getEventForVistor(){
+		
+		try{
+			
+			int number= input.nextInt();
+			
+			if(number==1)
+			{
+				return Event.CompactList;
+			}
+			if(number==2)
+			{
+				return Event.VerboseList;
+			}
+			if(number==3)
+			{
+				return Event.LookSpecificMemberInformation;
+			}
+			if(number==4)
+			{
+				return Event.None;
+			}
+			
+			
+			
+        }catch(Exception e){
+			
+			System.err.println("Please type in a right number");
+			
+		}
+		input.nextLine();
+		return Event.BackMenu;
+	}
+	
+	
+	
 	
 	
 	

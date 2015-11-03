@@ -12,16 +12,63 @@ public class Controller {
 	private boolean fail2=true;
 	private SweID checkid=new SweID();
 	private Counter count=new Counter();
+	private model.Administrator admin=new model.Administrator();
+	
+	
+	public boolean isAdministrator(view.Console a_view){
+		
+		a_view.Authentication();
+		view.Console.Event event;
+		event=a_view.getAuthentication();
+		
+		if(event==Event.Visitor)
+		{
+			return false;
+		}
+		else if(event==Event.Administrator)
+		{
+			String name=a_view.getAdministratorUserName();
+			String password=a_view.getAdministratorUserPassword();
+			if(name.equals(admin.getName())&&password.equals(admin.getPassword()))
+			{
+				return true;
+			}
+			else
+			{
+				a_view.NotAdministrator();
+				return false;
+			}
+			
+		}
+		else
+		{
+			return false;
+		}
+		
+		
+	}
+	
+	
 	
 	
 	
 	public boolean Dothings(view.Console a_view, model.Server a_sys){
 		
-		a_view.PresentInstructions();
 		
 		view.Console.Event e;
 		
-		e = a_view.getEvent();
+		if(isAdministrator(a_view))
+		{
+			a_view.PresentInstructions();
+			e = a_view.getEvent();
+		}
+		else
+		{
+			a_view.PresentInstructionsForVistor();
+			e = a_view.getEventForVistor();
+		}
+		
+		
 		a_view.Blank();
 		
 		if(e == Event.None){
